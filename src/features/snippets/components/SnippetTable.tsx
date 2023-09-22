@@ -1,22 +1,16 @@
-import { Table, Spinner, Alert } from 'flowbite-react';
+import { Table, Spinner, Alert, Pagination } from 'flowbite-react';
 import { useQuery } from '@tanstack/react-query';
 import { getSnippets } from '../services/snippetService';
 import SnippetTableRow from './SnippetTableRow';
-
-const SnippetTableHeaders = () => {
-  return (
-    <Table.Head>
-      <Table.HeadCell>Title</Table.HeadCell>
-      <Table.HeadCell>Date created</Table.HeadCell>
-      <Table.HeadCell>Views</Table.HeadCell>
-    </Table.Head>
-  );
-};
+import SnippetTableHeaders from './SnippetTableHeaders';
+import { useState } from 'react';
 
 const SnippetTable = () => {
+  const [page, setPage] = useState(1);
+
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['snippets'],
-    queryFn: getSnippets,
+    queryKey: ['snippets', page],
+    queryFn: () => getSnippets({ page }),
   });
 
   if (isLoading) {
@@ -29,10 +23,18 @@ const SnippetTable = () => {
   }
 
   return (
-    <Table className='w-full' hoverable striped>
-      <SnippetTableHeaders />
-      <Table.Body>{data.map(SnippetTableRow)}</Table.Body>
-    </Table>
+    <>
+      <Table className='w-full' hoverable striped>
+        <SnippetTableHeaders />
+        <Table.Body>{data.data.map(SnippetTableRow)}</Table.Body>
+      </Table>
+      <Pagination
+        currentPage={page}
+        onPageChange={(page) => setPage(page)}
+        showIcons
+        totalPages={data.total / 10}
+      />
+    </>
   );
 };
 
