@@ -1,11 +1,20 @@
 import axios from 'axios';
-import { Snippet } from '../types/Snippet';
+import { Snippet, SortParams } from '../types/Snippet';
 import { PaginatedResponse } from '../types/PaginatedResponse';
 
 const API_URL = 'http://localhost:3000/snippets';
 
-const getSnippets = async ({ page }: { page: number }): Promise<PaginatedResponse<Snippet>> => {
-  const { data } = await axios.get<PaginatedResponse<Snippet>>(API_URL, { params: { page } });
+const getSnippets = async ({
+  page,
+  sortParams,
+}: {
+  page: number;
+  sortParams: SortParams;
+}): Promise<PaginatedResponse<Snippet>> => {
+  const { views, createdAt } = sortParams;
+  const { data } = await axios.get<PaginatedResponse<Snippet>>(API_URL, {
+    params: { page, views, createdAt },
+  });
   return data;
 };
 
