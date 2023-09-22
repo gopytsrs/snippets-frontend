@@ -1,8 +1,13 @@
-function App() {
+import Snippets from './features/snippets/Snippets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+function App() {
+  const queryClient = new QueryClient();
   return (
-    <>Hello World</>
-  )
+    <QueryClientProvider client={queryClient}>
+      <Snippets />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
