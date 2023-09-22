@@ -1,4 +1,4 @@
-import { Table, Spinner, Alert, Pagination } from 'flowbite-react';
+import { Table, Spinner, Alert, Pagination, Button } from 'flowbite-react';
 import { useQuery } from '@tanstack/react-query';
 import { getSnippets } from '../services/snippetService';
 import SnippetTableRow from './SnippetTableRow';
@@ -19,6 +19,10 @@ const SnippetTable = () => {
     }
   };
 
+  const clearSort = () => {
+    setSortParams({});
+  };
+
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['snippets', page, sortParams],
     queryFn: () => getSnippets({ page, sortParams }),
@@ -35,6 +39,11 @@ const SnippetTable = () => {
 
   return (
     <div className='w-5/6 mx-auto'>
+      <div className='mt-6 mb-4 flex gap-2 items-center'>
+        <Button onClick={clearSort}>Reset table</Button>
+        <Button>New Snippet</Button>
+      </div>
+
       <Table hoverable striped>
         <Table.Head>
           <Table.HeadCell>Title</Table.HeadCell>
