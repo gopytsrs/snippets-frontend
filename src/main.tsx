@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Snippets from './features/snippets/pages/Snippets.tsx';
 import ErrorPage from './common/pages/ErrorPage.tsx';
 import SnippetPage from './features/snippets/pages/SnippetPage.tsx';
+import CreateSnippetPage from './features/snippets/pages/CreateSnippetPage.tsx';
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/snippet/create',
-    element: <div>Create a snippet</div>,
+    element: <CreateSnippetPage />,
   },
   {
     path: '/snippet/:uuid',

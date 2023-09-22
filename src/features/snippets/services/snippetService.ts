@@ -23,7 +23,7 @@ const createSnippet = async ({
   content,
 }: {
   title: string;
-  content: Text;
+  content: string;
 }): Promise<Snippet> => {
   const { data } = await axios.post<Snippet>(`${API_URL}/create`, {
     title,

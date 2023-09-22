@@ -6,8 +6,10 @@ import { useState } from 'react';
 import { SortParams, OrderKey, SortOrder } from '../types/Snippet';
 import UpIcon from '../../../common/icons/UpIcon';
 import DownIcon from '../../../common/icons/DownIcon';
+import { useNavigate } from 'react-router-dom';
 
 const SnippetTable = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [sortParams, setSortParams] = useState<SortParams>({});
 
@@ -41,7 +43,7 @@ const SnippetTable = () => {
     <div className='w-5/6 mx-auto'>
       <div className='mt-6 mb-4 flex gap-2 items-center'>
         <Button onClick={clearSort}>Reset table</Button>
-        <Button>New Snippet</Button>
+        <Button onClick={() => navigate('/snippet/create')}>New Snippet</Button>
       </div>
 
       <Table hoverable striped>
@@ -75,7 +77,7 @@ const SnippetTable = () => {
         currentPage={page}
         onPageChange={(page) => setPage(page)}
         showIcons
-        totalPages={data.total / 10}
+        totalPages={Math.ceil(data.total / 10)}
       />
     </div>
   );
