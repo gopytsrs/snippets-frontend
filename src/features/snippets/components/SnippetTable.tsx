@@ -27,9 +27,9 @@ const SnippetTable = () => {
     console.log(error);
     return <Alert color='failure'>Failed to fetch the snippets! Please try again later. </Alert>;
   }
-  console.log(data);
+
   return (
-    <Table className='w-full'>
+    <Table className='w-full' hoverable striped>
       <SnippetTableHeaders />
       <Table.Body>{data.map(SnippetTableRow)}</Table.Body>
     </Table>

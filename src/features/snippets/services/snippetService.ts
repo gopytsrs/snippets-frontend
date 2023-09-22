@@ -22,7 +22,7 @@ const createSnippet = async ({
   return data;
 };
 
-const getSnippetByUuid = async (uuid: string): Promise<Snippet> => {
+const getSnippetByUuid = async (uuid?: string): Promise<Snippet> => {
   const { data } = await axios.get<Snippet>(`${API_URL}/${uuid}`);
   return data;
 };
