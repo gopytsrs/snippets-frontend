@@ -7,6 +7,7 @@ import { SortParams, OrderKey, SortOrder } from '../types/Snippet';
 import UpIcon from '../../../common/icons/UpIcon';
 import DownIcon from '../../../common/icons/DownIcon';
 import { useNavigate } from 'react-router-dom';
+import EmptyTableState from './EmptyTableState';
 
 const SnippetTable = () => {
   const navigate = useNavigate();
@@ -74,7 +75,9 @@ const SnippetTable = () => {
           </Table.HeadCell>
           <Table.HeadCell>Expires</Table.HeadCell>
         </Table.Head>
-        <Table.Body>{data.data.map(SnippetTableRow)}</Table.Body>
+        <Table.Body>
+          {!data.total ? <EmptyTableState /> : data.data.map(SnippetTableRow)}
+        </Table.Body>
       </Table>
       <Pagination
         currentPage={page}
