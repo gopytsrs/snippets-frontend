@@ -1,6 +1,6 @@
 import { createSnippet } from '../services/snippetService';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { Card, Label, Textarea, Button, TextInput, Spinner } from 'flowbite-react';
+import { Card, Label, Textarea, Button, TextInput } from 'flowbite-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -98,7 +98,7 @@ const CreateSnippet = () => {
             />
           </div>
           <div>
-            <div className='mb-2 block'>
+            <div className='mt-3 mb-2 block'>
               <Label className='text-md' htmlFor='expiryInMinutes' value='Expires in (minutes):' />
             </div>
             <Controller
@@ -121,8 +121,13 @@ const CreateSnippet = () => {
               )}
             />
           </div>
-          <Button type='submit' className='mt-4 w-1/2 sm:w-1/4 self-center' disabled={isSubmitting}>
-            {isSubmitting && <Spinner />}Create Snippet
+          <Button
+            type='submit'
+            className='mt-4 w-1/2 sm:w-1/4 self-center'
+            disabled={isSubmitting}
+            isProcessing={isSubmitting}
+          >
+            Create Snippet
           </Button>
         </form>
       </Card>
