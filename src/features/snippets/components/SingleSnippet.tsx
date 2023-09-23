@@ -23,15 +23,15 @@ const SingleSnippet = () => {
   }
 
   return (
-    <Card className='flex flex-col gap-20 w-4/6'>
+    <Card className='flex flex-col w-5/6 sm:w-4/6'>
       <div className='text-3xl font-bold tracking-tight text-gray-900 dark:text-white'>
         <p>{data.title}</p>
       </div>
       <div className='font-normal text-2xl bg-gray-100 text-gray-700 dark:text-gray-400'>
         <p className='whitespace-pre-wrap'>{data.content}</p>
       </div>
-      <div className='flex flex-row justify-between'>
-        <div className='flex gap-2 items-center'>
+      <div className='mt-2 flex flex-row justify-between'>
+        <div className='flex gap-2 items-center text-sm'>
           <CalendarIcon />
           <p>{formatDisplayDate(data.createdAt)}</p>
         </div>

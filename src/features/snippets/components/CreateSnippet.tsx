@@ -27,7 +27,7 @@ const CreateSnippet = () => {
   };
 
   return (
-    <Card className='w-4/6'>
+    <Card className='w-5/6 sm:w-4/6'>
       <form className='flex flex-col w-full' onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className='mb-2 block'>
@@ -76,7 +76,7 @@ const CreateSnippet = () => {
             )}
           />
         </div>
-        <Button type='submit' className='mt-4 w-1/4 self-center'>
+        <Button type='submit' className='mt-4 w-1/2 sm:w-1/4 self-center'>
           Create Snippet
         </Button>
       </form>
