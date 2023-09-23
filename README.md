@@ -1,8 +1,8 @@
 ## Description
 
-This repository contains the frontend code for the Technology Associate Programme 2023 Assignment by GDS Central.
+This repository contains the **frontend** code for the Technology Associate Programme 2023 Assignment by GDS Central. For the backend code, please check the other repository.
 
-The problem selected is Problem 2: [Snippet Sharing Service]
+The problem selected is **Problem 2: [Snippet Sharing Service]**
 
 The assignment was initiated on 22 September 2023 3:19:30pm with a dealine of 72 hours (ResponseID: 650d4002c7baae00125f3be1)
 
@@ -13,17 +13,17 @@ The assignment was initiated on 22 September 2023 3:19:30pm with a dealine of 72
 
 ## Code architecture
 
-The code follows a standard React project architecture using `features` which typically correspond to a backend resource. There is only one feature in this projects `features/snippets`.
+The code follows a standard React project architecture grouping files by `features` which typically correspond to a backend resource. There is only one feature in this project `features/snippets`.
 
 - `components` holds all React components that contain main business logic
 - `pages` contains pages corresponding to elements used in the `BrowserRouter` offered by `react-router-dom`
-- `containers` holds reusable elements such as wrappers
+- `containers` holds wrapper elments
 - `services` contains the code that interacts with the backend API
 - `types` contains type or declaration files to be used
 
 Under `src`
 
-- `common` folder contains components that can be re-used across different features, though not as applicable in this project
+- `common` folder contains reusable components across different features, though not as applicable in this project
 - `utils` folder contains utility services and functions that can be re-used across differnet features
 
 ## Technologies used
@@ -48,7 +48,7 @@ Below are some of the technologies I decided to use for the project with a short
 
 - **[Vite](https://vitejs.dev/)**
 
-  - Vite is used as the development and bundler of choice in this project, it provides much quicker build times compared to `create-react-app` and also provides templates which can be extended and used easily and other features to improve developer experience such as Hot Module Reloading.
+  - Vite is used as the development environment and bundler of choice in this project, it provides much quicker build times compared to `create-react-app` and also provides templates which can be extended and used easily. It also includes other features to improve developer experience such as Hot Module Reloading.
 
 - **[Vercel](https://vercel.com/)**
 
@@ -58,13 +58,14 @@ Below are some of the technologies I decided to use for the project with a short
   - `date-fns` for date utilities
   - `react-hook-form` for form handling
   - `axios` for data fetching
+  - `react-toastify` for toast notifications
 
 ## Caveats/Improvements
 
 Due to the time and resource constraints of completing the assignment. There were some additional tasks or features that were under consideration that were skipped.
 
 - **UI/UX and Responsiveness**
-  - The main issue I ran into was that Flowbite components were not very feature-rich or supported much customization at all, and that it was not as widely-used, hence less documented.
+  - The main issue I ran into was that Flowbite components were not very feature-rich or supported much customization at all. Additionally since it was not as widely-used, documentation was sparse or outdated.
   - The table used in the main page perhaps is not very elegant and there also some issues with responsive design. It was also hard to integrate sorting and pagination due to lack of documentation on doing so with the library.
   - The `Pagination` component is not easily configured and does not expose some useful props, it might have been better to use better supported libraries such as AntD or MaterialUI instead.
 - **Unit, Integration and E2E testing**
