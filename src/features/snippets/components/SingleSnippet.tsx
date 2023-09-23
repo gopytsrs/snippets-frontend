@@ -1,4 +1,4 @@
-import { Alert, Button, Card, Spinner } from 'flowbite-react';
+import { Alert, Button, Card, Spinner, Tooltip } from 'flowbite-react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getSnippetByUuid } from '../services/snippetService';
@@ -27,9 +27,11 @@ const SingleSnippet = () => {
     <Card className='flex flex-col w-5/6 sm:w-4/6'>
       <div className='flex flex-row justify-between text-3xl font-bold tracking-tight text-gray-900 dark:text-white'>
         <p>{data.title}</p>
-        <Button color='gray' onClick={() => navigator.clipboard.writeText(`${window.location}`)}>
-          <LinkIcon />
-        </Button>
+        <Tooltip content='Copy URL of this snippet'>
+          <Button color='gray' onClick={() => navigator.clipboard.writeText(`${window.location}`)}>
+            <LinkIcon />
+          </Button>
+        </Tooltip>
       </div>
       <div className='font-normal text-2xl bg-gray-100 text-gray-700 dark:text-gray-400'>
         <p className='whitespace-pre-wrap'>{data.content}</p>
@@ -49,7 +51,9 @@ const SingleSnippet = () => {
         </div>
 
         <div className='flex gap-2 items-center'>
-          <EyeIcon />
+          <Tooltip content='Views'>
+            <EyeIcon />
+          </Tooltip>
           <p>{data.views} </p>
         </div>
       </div>
