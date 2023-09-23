@@ -12,6 +12,7 @@ const SingleSnippet = () => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['snippet', uuid],
     queryFn: () => getSnippetByUuid(uuid),
+    refetchOnWindowFocus: false, // To prevent random view count increments when tab switches
   });
 
   if (isLoading) {
