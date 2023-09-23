@@ -8,7 +8,7 @@ import { formatDisplayDate } from '../../../utils/dateUtil';
 
 const SingleSnippet = () => {
   const { uuid } = useParams();
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ['snippet', uuid],
     queryFn: () => getSnippetByUuid(uuid),
   });
@@ -18,7 +18,6 @@ const SingleSnippet = () => {
   }
 
   if (isError) {
-    console.log(error);
     return <Alert color='failure'>Failed to fetch the snippets! Please try again later. </Alert>;
   }
 

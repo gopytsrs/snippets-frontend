@@ -26,7 +26,7 @@ const SnippetTable = () => {
     setSortParams({});
   };
 
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ['snippets', page, sortParams],
     queryFn: () => getSnippets({ page, sortParams }),
   });
@@ -36,11 +36,8 @@ const SnippetTable = () => {
   }
 
   if (isError) {
-    console.log(error);
     return <Alert color='failure'>Failed to fetch the snippets! Please try again later. </Alert>;
   }
-
-  console.log(data);
 
   return (
     <div className='w-5/6 mx-auto'>
