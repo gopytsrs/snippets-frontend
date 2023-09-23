@@ -1,12 +1,11 @@
-import TopNav from '../components/TopNav';
 import SnippetTable from '../components/SnippetTable';
+import NavContainer from '../containers/NavContainer';
 
 const Snippets = () => {
   return (
-    <div className='w-screen h-screen flex flex-col'>
-      <TopNav />
+    <NavContainer>
       <SnippetTable />
-    </div>
+    </NavContainer>
   );
 };
 

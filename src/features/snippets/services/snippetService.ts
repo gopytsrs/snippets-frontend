@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Snippet, SortParams } from '../types/Snippet';
 import { PaginatedResponse } from '../types/PaginatedResponse';
 
-const API_URL = 'http://localhost:3000/snippets';
+const API_URL = import.meta.env.VITE_API_URL + '/snippets';
 
 const getSnippets = async ({
   page,

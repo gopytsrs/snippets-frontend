@@ -1,14 +1,11 @@
-import BackButton from '../../../common/components/BackButton';
 import CreateSnippet from '../components/CreateSnippet';
-import TopNav from '../components/TopNav';
+import NavContainer from '../containers/NavContainer';
 
 const CreateSnippetPage = () => {
   return (
-    <div className='w-screen h-screen flex flex-col items-center gap-4'>
-      <TopNav />
-      <BackButton />
+    <NavContainer>
       <CreateSnippet />
-    </div>
+    </NavContainer>
   );
 };
 
