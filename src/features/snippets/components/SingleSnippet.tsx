@@ -6,10 +6,11 @@ import CalendarIcon from '../../../common/icons/CalendarIcon';
 import EyeIcon from '../../../common/icons/EyeIcon';
 import { formatDisplayDate } from '../../../utils/dateUtil';
 import LinkIcon from '../../../common/icons/LinkIcon';
+import { AxiosError, HttpStatusCode } from 'axios';
 
 const SingleSnippet = () => {
   const { uuid } = useParams();
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ['snippet', uuid],
     queryFn: () => getSnippetByUuid(uuid),
     refetchOnWindowFocus: false, // To prevent random view count increments when tab switches
@@ -20,7 +21,10 @@ const SingleSnippet = () => {
   }
 
   if (isError) {
-    return <Alert color='failure'>Failed to fetch the snippets! Please try again later. </Alert>;
+    if (error instanceof AxiosError && error.response?.status === HttpStatusCode.BadRequest) {
+      return <Alert color='failure'>{error.response.data.message}</Alert>;
+    }
+    return <Alert color='failure'>Failed to fetch the snippet! Please try again later. </Alert>;
   }
 
   return (
