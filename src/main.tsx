@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Snippets from './features/snippets/pages/Snippets.tsx';
 import ErrorPage from './common/pages/ErrorPage.tsx';
 import SnippetPage from './features/snippets/pages/SnippetPage.tsx';
@@ -10,7 +10,7 @@ import CreateSnippetPage from './features/snippets/pages/CreateSnippetPage.tsx';
 
 const queryClient = new QueryClient();
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Snippets />,
