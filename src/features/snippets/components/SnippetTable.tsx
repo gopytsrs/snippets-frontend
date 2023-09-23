@@ -42,7 +42,7 @@ const SnippetTable = () => {
   return (
     <div className='w-5/6 mx-auto'>
       <div className='mt-6 mb-4 flex gap-2 items-center'>
-        <Button onClick={clearSort}>Reset table</Button>
+        <Button onClick={clearSort}>Reset snippets order</Button>
         <Button onClick={() => navigate('/snippet/create')}>New Snippet</Button>
       </div>
 
