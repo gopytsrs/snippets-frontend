@@ -39,6 +39,8 @@ const SnippetTable = () => {
     return <Alert color='failure'>Failed to fetch the snippets! Please try again later. </Alert>;
   }
 
+  console.log(data);
+
   return (
     <div className='w-5/6 mx-auto'>
       <div className='mt-6 mb-4 flex gap-2 items-center'>
@@ -49,6 +51,16 @@ const SnippetTable = () => {
       <Table hoverable striped>
         <Table.Head>
           <Table.HeadCell>Title</Table.HeadCell>
+          <Table.HeadCell onClick={() => toggleSort(OrderKey.VIEWS)}>
+            <div className='flex items-center'>
+              <p className='mr-0.5'>Views</p>{' '}
+              {!sortParams[OrderKey.VIEWS] || sortParams[OrderKey.VIEWS] === SortOrder.DESC ? (
+                <DownIcon />
+              ) : (
+                <UpIcon />
+              )}
+            </div>
+          </Table.HeadCell>
           <Table.HeadCell onClick={() => toggleSort(OrderKey.CREATED_AT)}>
             <div className='flex items-center'>
               <p className='mr-0.5'>Date added</p>{' '}
@@ -60,16 +72,7 @@ const SnippetTable = () => {
               )}
             </div>
           </Table.HeadCell>
-          <Table.HeadCell onClick={() => toggleSort(OrderKey.VIEWS)}>
-            <div className='flex items-center'>
-              <p className='mr-0.5'>Views</p>{' '}
-              {!sortParams[OrderKey.VIEWS] || sortParams[OrderKey.VIEWS] === SortOrder.DESC ? (
-                <DownIcon />
-              ) : (
-                <UpIcon />
-              )}
-            </div>
-          </Table.HeadCell>
+          <Table.HeadCell>Expires</Table.HeadCell>
         </Table.Head>
         <Table.Body>{data.data.map(SnippetTableRow)}</Table.Body>
       </Table>

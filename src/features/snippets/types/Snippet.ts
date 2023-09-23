@@ -4,6 +4,7 @@ export interface Snippet {
   title: string;
   content: string;
   createdAt: string;
+  expiresAt: string;
 }
 
 export enum OrderKey {

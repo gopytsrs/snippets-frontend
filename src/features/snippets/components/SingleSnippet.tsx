@@ -31,10 +31,19 @@ const SingleSnippet = () => {
         <p className='whitespace-pre-wrap'>{data.content}</p>
       </div>
       <div className='mt-2 flex flex-row justify-between'>
-        <div className='flex gap-2 items-center text-sm'>
-          <CalendarIcon />
-          <p>{formatDisplayDate(data.createdAt)}</p>
+        <div className='grid-cols-1'>
+          <div className='flex gap-2 items-center text-sm'>
+            <CalendarIcon />
+            <p>Created:</p>
+            <p>{formatDisplayDate(data.createdAt)}</p>
+          </div>
+          <div className='mt-1 flex gap-2 items-center text-sm'>
+            <CalendarIcon />
+            <p>Expires:</p>
+            <p>{formatDisplayDate(data.expiresAt)}</p>
+          </div>
         </div>
+
         <div className='flex gap-2 items-center'>
           <EyeIcon />
           <p>{data.views} </p>
