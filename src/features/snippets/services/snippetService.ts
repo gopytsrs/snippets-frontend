@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Snippet, SortParams } from '../types/Snippet';
+import { Snippet, SnippetCreateDto, SortParams } from '../types/Snippet';
 import { PaginatedResponse } from '../types/PaginatedResponse';
 
 const API_URL = import.meta.env.VITE_API_URL + '/snippets';
@@ -21,13 +21,12 @@ const getSnippets = async ({
 const createSnippet = async ({
   title,
   content,
-}: {
-  title: string;
-  content: string;
-}): Promise<Snippet> => {
+  expiryInMinutes,
+}: SnippetCreateDto): Promise<Snippet> => {
   const { data } = await axios.post<Snippet>(`${API_URL}/create`, {
     title,
     content,
+    expiryInSeconds: expiryInMinutes * 60,
   });
   return data;
 };

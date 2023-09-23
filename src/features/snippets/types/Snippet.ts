@@ -7,6 +7,12 @@ export interface Snippet {
   expiresAt: string;
 }
 
+export interface SnippetCreateDto {
+  title: string;
+  content: string;
+  expiryInMinutes: number;
+}
+
 export enum OrderKey {
   VIEWS = 'views',
   CREATED_AT = 'createdAt',

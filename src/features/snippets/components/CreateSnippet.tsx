@@ -6,6 +6,7 @@ import { Card, Label, Textarea, Button, TextInput } from 'flowbite-react';
 interface IFormInput {
   title: string;
   content: string;
+  expiryInMinutes: number;
 }
 
 const CreateSnippet = () => {
@@ -18,6 +19,7 @@ const CreateSnippet = () => {
     defaultValues: {
       title: '',
       content: '',
+      expiryInMinutes: 5,
     },
   });
 
@@ -31,7 +33,7 @@ const CreateSnippet = () => {
       <form className='flex flex-col w-full' onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className='mb-2 block'>
-            <Label className='text-md' htmlFor='comment' value='Snippet title:' />
+            <Label className='text-md' htmlFor='title' value='Snippet title:' />
           </div>
           <Controller
             name='title'
@@ -45,7 +47,7 @@ const CreateSnippet = () => {
                 {...field}
                 color={errors.title && 'failure'}
                 helperText={errors.title && errors.title.message}
-                id='base'
+                id='title'
                 sizing='md'
                 type='text'
                 placeholder='Enter title here...'
@@ -72,6 +74,30 @@ const CreateSnippet = () => {
                 id='content'
                 placeholder='Enter content here...'
                 rows={8}
+              />
+            )}
+          />
+        </div>
+        <div>
+          <div className='mb-2 block'>
+            <Label className='text-md' htmlFor='expiryInMinutes' value='Expires in (minutes):' />
+          </div>
+          <Controller
+            name='expiryInMinutes'
+            control={control}
+            rules={{
+              required: { value: true, message: 'Expiry is required' },
+              min: { value: 5, message: 'Expiry should be at least 5 minute' },
+            }}
+            render={({ field }) => (
+              <TextInput
+                {...field}
+                color={errors.expiryInMinutes && 'failure'}
+                helperText={errors.expiryInMinutes && errors.expiryInMinutes.message}
+                id='expiryInMinutes'
+                sizing='md'
+                type='number'
+                defaultValue={5}
               />
             )}
           />
