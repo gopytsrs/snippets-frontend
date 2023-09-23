@@ -1,10 +1,11 @@
-import { Alert, Card, Spinner } from 'flowbite-react';
+import { Alert, Button, Card, Spinner } from 'flowbite-react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getSnippetByUuid } from '../services/snippetService';
 import CalendarIcon from '../../../common/icons/CalendarIcon';
 import EyeIcon from '../../../common/icons/EyeIcon';
 import { formatDisplayDate } from '../../../utils/dateUtil';
+import LinkIcon from '../../../common/icons/LinkIcon';
 
 const SingleSnippet = () => {
   const { uuid } = useParams();
@@ -23,8 +24,11 @@ const SingleSnippet = () => {
 
   return (
     <Card className='flex flex-col w-5/6 sm:w-4/6'>
-      <div className='text-3xl font-bold tracking-tight text-gray-900 dark:text-white'>
+      <div className='flex flex-row justify-between text-3xl font-bold tracking-tight text-gray-900 dark:text-white'>
         <p>{data.title}</p>
+        <Button color='gray' onClick={() => navigator.clipboard.writeText(`${window.location}`)}>
+          <LinkIcon />
+        </Button>
       </div>
       <div className='font-normal text-2xl bg-gray-100 text-gray-700 dark:text-gray-400'>
         <p className='whitespace-pre-wrap'>{data.content}</p>
